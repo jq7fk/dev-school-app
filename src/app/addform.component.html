@@ -7,29 +7,47 @@
         <div class="form-group">
           <label for="eventName">Event Name</label>
           <input class="form-control" id="eventName1" placeholder="Enter event name" required>
+          <div class="invalid-feedback">
+            Event name required.
+          </div>
         </div>
         <div class="form-group">
           <label for="location">Location</label>
-          <input class="form-control mb-3 mr-sm-3" id="location1" placeholder="Location">
+          <input class="form-control mb-3 mr-sm-3" id="location1" placeholder="Location" required>
+          <div class="invalid-feedback">
+              Location required.
+            </div>
         </div>
         <form class="form-inline">
         <div class="form-group form-inline">
             <label for="datetime-local-input" style="padding: 10px">Start Date</label>
-            <input class="form-control mb-3 mr-sm-3" type="date" value="2019-06-19T13:45:00" id="example-datetime-local-input">
+            <input class="form-control mb-3 mr-sm-3" type="date" value="2019-06-19T13:45:00" id="example-datetime-local-input" required>
+            <div class="invalid-feedback">
+                Start date required.
+              </div>
         </div>
         <div class="form-group form-inline">
             <label for="datetime-local-input" style="padding: 10px">Start Time</label>
-            <input class="form-control" type="time" value="2019-06-19T13:45:00" id="example-datetime-local-input">
+            <input class="form-control" type="time" value="2019-06-19T13:45:00" id="example-datetime-local-input" required>
+            <div class="invalid-feedback">
+                Start time required.
+              </div>
         </div>
       </form>
       <form class="form-inline">
           <div class="form-group form-inline">
-              <label for="datetime-local-input" style="padding: 10px">End Date</label>
-              <input class="form-control mb-3 mr-sm-3" type="date" value="2019-06-19T13:45:00" id="example-datetime-local-input">
+              <label for="datetime-local-input" style="padding: 15px">End Date</label>
+              <input class="form-control mb-3 mr-sm-3" type="date" value="2019-06-19T13:45:00" id="example-datetime-local-input" required>
+              <div class="invalid-feedback">
+                  End date required.
+                </div>
           </div>
           <div class="form-group form-inline">
-              <label for="datetime-local-input" style="padding: 17px">End Time</label>
-              <input class="form-control" type="time" value="2019-06-19T13:45:00" id="example-datetime-local-input">
+              <label for="datetime-local-input" style="padding: 14px">End Time</label>
+              <input class="form-control" type="time" value="2019-06-19T13:45:00" id="example-datetime-local-input" required>
+              <div class="invalid-feedback">
+                  End time required.
+              </div>
           </div>
         </form>
         <div class="form-group">
