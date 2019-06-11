@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AddformComponent } from './addform.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AddformComponent } from './addform.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
