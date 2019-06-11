@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AddformComponent } from './addform.component';
@@ -11,6 +9,9 @@ import { CardComponent } from './card.component';
 import { NavbarComponent } from './navbar.component';
 import { CreateComponent } from './create.component';
 import { DashboardComponent } from './dashboard.component';
+import { InfocardComponent } from './infocard.component';
+import { InfocommentComponent } from './infocomment.component';
+import { InfonavbarComponent } from './infonavbar.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,13 @@ import { DashboardComponent } from './dashboard.component';
     CardComponent,
     NavbarComponent,
     CreateComponent,
-    DashboardComponent
+    DashboardComponent,
+    InfocardComponent,
+    InfocommentComponent,
+    InfonavbarComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    MatCardModule,
     AppRoutingModule
   ],
   providers: [],
