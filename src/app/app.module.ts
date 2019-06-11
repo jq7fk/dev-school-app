@@ -4,10 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { AddformComponent } from './addform.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddformComponent
   ],
   imports: [
     BrowserModule,
