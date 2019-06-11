@@ -6,11 +6,13 @@ import { MatCardModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { AddformComponent } from './addform.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DetailsComponent } from './details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddformComponent
+    AddformComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
