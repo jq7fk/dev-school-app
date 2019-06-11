@@ -7,12 +7,20 @@ import { AppComponent } from './app.component';
 import { AddformComponent } from './addform.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DetailsComponent } from './details.component';
+import { CardComponent } from './card.component';
+import { NavbarComponent } from './navbar.component';
+import { CreateComponent } from './create.component';
+import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddformComponent,
-    DetailsComponent
+    DetailsComponent,
+    CardComponent,
+    NavbarComponent,
+    CreateComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
