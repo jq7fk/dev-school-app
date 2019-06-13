@@ -25,5 +25,6 @@ export class DetailsComponent implements OnInit {
         if(this.event.attendees.filter(item => item.id == this.user.id).length != 0) {
             this.joined = true;
         }
+        console.log(this.event);
     }
 }

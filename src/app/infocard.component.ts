@@ -4,7 +4,6 @@ import { NgModel } from '@angular/forms';
 import { User } from './user';
 import { Comment } from './comment';
 import { events } from './eventsdata';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-infocard',
@@ -20,12 +19,8 @@ export class InfocardComponent implements OnInit {
   id: number;
   submitted = false;
 
-  constructor(private route: Router, private dataRoute: ActivatedRoute) {
-
-  }
-
   ngOnInit() {
-    
+    console.log(this.event);
   }
 
   join() {

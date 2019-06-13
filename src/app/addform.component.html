@@ -3,65 +3,59 @@
 
   <h3 class="text-center my-4">Create an Event</h3>
 
-    <form class="needs-validation" novalidate>
+    <form class="needs-validation" novalidate [formGroup]="addForm" (ngSubmit)="newEvent()">
         <div class="form-group">
           <label for="eventName">Event Name</label>
           <input class="form-control" id="title" placeholder="Enter event name" required
-          [(ngModel)]="model.title" title="title" name="title"
-          #title = 'ngModel'>
-          
-          <div [hidden]="title.valid || title.pristine"
-          class="alert alert-danger">
-            Event name required.
-          </div>
+          [(ngModel)]="model.title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+          <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+              <div *ngIf="f.title.errors.required">Event name is required</div>
+          </div>   
         </div>
         <div class="form-group">
           <label for="location">Location</label>
           <input class="form-control mb-3 mr-sm-3" id="location" placeholder="Enter location" required
-          [(ngModel)]="model.location" location="location" name="location"
-          #location = 'ngModel'>
-          <div [hidden]="location.valid || location.pristine"
-          class="alert alert-danger">
-              Location required.
-            </div>
+          [(ngModel)]="model.location" formControlName="location" [ngClass]="{ 'is-invalid': submitted && f.location.errors }">
+          <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+              <div *ngIf="f.location.errors.required">Location is required</div>
+          </div>
         </div>
         <div class="form-inline">
         <div class="form-group form-inline">
             <label for="datetime-local-input" style="padding: 10px">Date</label>
             <input class="form-control mb-3 mr-sm-3" type="date" value="2019-06-14T13:45:00" id="date" required
-            [(ngModel)]="model.date" date="date" name="date"
-            #date= 'ngModel'>
-            <div [hidden]="date.valid || date.pristine"
-            class="alert alert-danger">
-                Date required.
-              </div>
+            [(ngModel)]="model.date" formControlName="date" [ngClass]="{ 'is-invalid': submitted && f.date.errors }">
+            <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                <div *ngIf="f.date.errors.required">Date is required</div>
+            </div>
         </div>
         <div class="form-group form-inline">
             <label for="datetime-local-input" style="padding: 10px">Time</label>
             <input class="form-control" type="time" value="2019-06-19T13:45:00" id="time" required
-            [(ngModel)]="model.time" time="time" name="time"
-            #time = 'ngModel'>
-            <div [hidden]="time.valid || time.pristine"
-            class="alert alert-danger">
-                Time required.
-              </div>
+            [(ngModel)]="model.time" formControlName="time" [ngClass]="{ 'is-invalid': submitted && f.time.errors }">
+            <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
+                <div *ngIf="f.time.errors.required">Time is required</div>
+            </div>
         </div>
       </div>
         <div class="form-group">
           <label for="description">Description</label>
           <textarea class="form-control" id="description" rows="3" placeholder="Add a description"
-          [(ngModel)]="model.description" description="description" name="description"></textarea>
+          [(ngModel)]="model.description" formControlName="description"></textarea>
         </div>
         <div class="form-group">
             <label for="photoUpload">Upload a photo</label>
             <input type="url" class="form-control" id="imageUrl" placeholder="Paste an image URL"
-            [(ngModel)]="model.imageUrl" imageUrl="imageUrl" name="imageUrl">
+            [(ngModel)]="model.imageUrl" formControlName="imageUrl" [ngClass]="{ 'is-invalid': submitted && f.imageUrl.errors }">
+            <div *ngIf="submitted && f.imageUrl.errors" class="invalid-feedback">
+                <div *ngIf="f.imageUrl.errors.required">Image is required</div>
+            </div>
           <div>
             <img src="">
             </div>
           </div>
         <div class="text-center">
-        <button (click)="newEvent()" type="submit" class="btn btn-primary custom mx-5" routerLink="/dashboard">Submit</button>
+        <button (click)="newEvent()" class="btn btn-primary custom mx-5">Submit</button>
         <button type="cancel" class="btn btn-danger custom mx-5" routerLink="/dashboard">Cancel</button>
         </div>
       </form>
