@@ -7,6 +7,8 @@ import { User } from './user';
 import { events } from './eventsdata';
 import { Router, ActivatedRoute } from '@angular/router';
 import { users } from './usersdata';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './dialog.component';
 
 @Component({
   selector: 'app-addform',
@@ -28,7 +30,8 @@ export class AddformComponent implements OnInit {
   id: number;
   eventsList = events;
 
-  constructor(private formBuilder: FormBuilder, private route: Router, private dataRoute: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private route: Router, private dataRoute: ActivatedRoute,
+    public dialog: MatDialog) {
 
   }
 
@@ -71,5 +74,10 @@ export class AddformComponent implements OnInit {
   delete() {
     var index = this.eventsList.indexOf(this.model);
     this.eventsList.splice(index, 1);
+  }
+
+  openDialog() {
+    console.log('dialog');
+    const dialogRef = this.dialog.open(DialogComponent);
   }
 }

@@ -4,7 +4,7 @@
   <h3 *ngIf="!edit" class="text-center my-4">Create an Event</h3>
   <h3 *ngIf="edit" class="text-center my-4">Edit Event</h3>
 
-    <form class="needs-validation" novalidate [formGroup]="addForm" (ngSubmit)="newEvent()">
+    <form class="needs-validation" novalidate [formGroup]="addForm">
         <div class="form-group">
           <label for="eventName">Event Name</label>
           <input class="form-control" id="title" placeholder="Enter event name" required
@@ -56,11 +56,11 @@
             </div>
           </div>
         <div class="text-center">
-        <button *ngIf="!edit" class="btn btn-primary custom mx-5">Submit</button>
+        <button *ngIf="!edit" class="btn btn-primary custom mx-5" (click)="newEvent()">Submit</button>
         <button *ngIf="!edit" type="cancel" class="btn btn-danger custom mx-5" routerLink="/dashboard">Cancel</button>
         <button *ngIf="edit" class="btn btn-primary custom mx-5" routerLink="/dashboard">Save Changes</button>
         <button *ngIf="edit" class="btn btn-secondary custom mx-5" routerLink="/dashboard">Cancel</button>
-        <button *ngIf="edit" class="btn btn-danger cuseom mx-5" (click)="delete()" routerLink="/dashboard">Delete Event</button>
+        <button *ngIf="edit" class="btn btn-danger custom mx-5" (click)="openDialog()">Delete Event</button>
         </div>
       </form>
 
