@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class CardComponent implements OnInit {
   @Input() event: Event;
+  @Input() joined: boolean;
 
-  joined=false;
+  //joined=false;
   eventsList = events;
   currentUser = new User(5, "Current", "User", "Dallas");
 
@@ -19,7 +20,6 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
   join() {

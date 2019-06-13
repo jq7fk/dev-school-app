@@ -2,6 +2,8 @@
         <button type="button" class="btn-primary btn-lg" routerLink="/addEvent">Create</button>
 </div></nav>
     <div style="padding-left:300px; padding-right:300px">
-        <app-card *ngFor="let event of eventsList" [event]="event"></app-card>
+        <div *ngFor="let event of eventsList; let i = index">
+                <app-card [event]="event" [joined]="joinedList[i]"></app-card>
+        </div>
 <router-outlet></router-outlet>
 </div>

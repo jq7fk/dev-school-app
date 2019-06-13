@@ -8,8 +8,7 @@ import { User } from './user';
   selector: 'app-infocard',
   templateUrl: './infocard.component.html',
 })
-export class InfocardComponent implements OnInit{
-  going = [] 
+export class InfocardComponent implements OnInit{ 
   joined = false;
   eventsList = events;
   id: number;
@@ -22,7 +21,9 @@ export class InfocardComponent implements OnInit{
   ngOnInit() {
     this.id = this.dataRoute.snapshot.params['id'];
     this.event = this.eventsList.find(item => item.id == this.id);
-    this.going = this.event.attendees;
+    if(this.event.attendees.filter(item => item.id == this.currentUser.id).length != 0) {
+      this.joined = true;
+    }
   }
 
   join() {

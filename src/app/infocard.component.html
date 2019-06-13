@@ -13,7 +13,7 @@
             <div class="card-body" align="left" style="margin-left:20px">
                 <p class="card-text">{{event.date}}</p>
                 <p class="card-text">{{event.location}}</p>
-                <div class="card-text">Going: </div> <div *ngFor="let p of going">{{p.firstname}} {{p.lastname}}</div>
+                <div class="card-text">Going: </div> <div *ngFor="let p of event.attendees">{{p.firstname}} {{p.lastname}}</div>
                 <p></p>
                 <p class="card-text">More Details: {{event.description}}
                 </p>
