@@ -4,6 +4,7 @@ import { NgModel } from '@angular/forms';
 import { User } from './user';
 import { Comment } from './comment';
 import { events } from './eventsdata';
+import { users } from './usersdata';
 
 @Component({
   selector: 'app-infocard',
@@ -12,18 +13,45 @@ import { events } from './eventsdata';
 export class InfocardComponent implements OnInit {
   @Input() event: Event;
 
-  currentUser = new User(5, "Current", "User", "Dallas");
+  currentUser = users[4];
   comment = new Comment(this.currentUser, '');
   joined = false;
   eventsList = events;
   id: number;
   submitted = false;
+  creator = false;
+  hover = false;
+
 
   ngOnInit() {
-    if(this.event.attendees.filter(person => person.id == this.currentUser.id).length != 0) {
+    if (this.event.attendees.filter(person => person.id == this.currentUser.id).length != 0) {
       console.log('here');
       this.joined = true;
     }
+    if (this.currentUser == this.event.creator) {
+      this.creator = true;
+
+    }
+
+  }
+
+  leave() {
+    this.joined = false;
+    this.hover = false;
+    this.eventsList.forEach(item => {
+      var index = item.attendees.indexOf(this.currentUser);
+      item.attendees.splice(index, 1);
+    });
+  }
+
+  mouseEnter() {
+    this.joined = false;
+    this.hover = true;
+  }
+
+  mouseLeave() {
+    this.joined = true;
+    this.hover = false;
   }
 
   join() {
