@@ -17,7 +17,8 @@ export class AddformComponent implements OnInit {
   user2 = new User(1, 'Matt', 'Damon', 'Houston');
   user3 = new User(1, 'Chris', 'Pratt', 'Houston');
   going = [this.user1, this.user2, this.user3];
-  model = new Event(null, '', '', '', '', this.user , this.going, '', '');
+  nocomments = [];
+  model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
   submitted = false;
 
   ngOnInit() {
@@ -32,8 +33,8 @@ export class AddformComponent implements OnInit {
     var index = events[events.length - 1].id;
     this.model.id = index + 1;
     events.push(this.model);
-    this.model = new Event(null, '', '', '', '', this.user , this.going, '', '');
-    this.submitted = true; 
-  }
+    this.model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
+    this.submitted = true; }
+    
 
 }

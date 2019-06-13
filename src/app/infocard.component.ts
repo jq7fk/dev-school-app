@@ -1,34 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Event } from './event';
+import { NgModel } from '@angular/forms';
+import { User } from './user';
+import { Comment } from './comment';
 import { events } from './eventsdata';
 import { Router, ActivatedRoute } from '@angular/router';
-import { User } from './user';
 
 @Component({
   selector: 'app-infocard',
   templateUrl: './infocard.component.html',
 })
-export class InfocardComponent implements OnInit{ 
+export class InfocardComponent implements OnInit {
+  @Input() event: Event;
+  
+  user = new User(1, 'Edmund', 'Pan', 'Houston');
+  comment = new Comment(this.user, '');
   joined = false;
   eventsList = events;
   id: number;
-  event: Event;
-  currentUser = new User(5, "Current", "User", "Dallas");
+  submitted = false;
 
   constructor(private route: Router, private dataRoute: ActivatedRoute) {
+
   }
 
   ngOnInit() {
-    this.id = this.dataRoute.snapshot.params['id'];
-    this.event = this.eventsList.find(item => item.id == this.id);
-    if(this.event.attendees.filter(item => item.id == this.currentUser.id).length != 0) {
-      this.joined = true;
-    }
+    
   }
 
   join() {
     this.joined = true;
-    this.eventsList.find(item => item.id === this.event.id).attendees.push(this.currentUser);
+    this.eventsList.find(item => item.id === this.event.id).attendees.push(this.user);
   }
 
+  newComment() {
+    console.log(this.comment.content);
+    this.event.comments.push(this.comment);
+    this.comment = new Comment(this.user, '');
+    this.submitted = true;
+  }
 }
+

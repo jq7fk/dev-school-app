@@ -10,14 +10,14 @@ const routes: Routes = [
   { path: 'addEvent', component: AddformComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'details/:id', component: DetailsComponent}
-]
+];
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
-  ], 
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
+  ],
   exports: [
     RouterModule
   ]
