@@ -13,6 +13,11 @@ export class DashboardComponent implements OnInit {
     currentUser = new User(5, "Current", "User", "Dallas");
 
     ngOnInit() {
+      this.eventsList.sort(function(a, b) {
+        if(a.id < b.id) return 1;
+        else if(a.id > b.id) return -1;
+        else return 0;
+      });
       this.eventsList.forEach(item => {
         if(item.attendees.filter(person => person.id == this.currentUser.id).length != 0) {
           this.joinedList.push(true);
