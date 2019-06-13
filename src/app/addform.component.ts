@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Time } from '@angular/common';
 import { Event } from './event';
@@ -10,7 +10,7 @@ import { events } from './eventsdata';
   selector: 'app-addform',
   templateUrl: './addform.component.html',
 })
-export class AddformComponent {
+export class AddformComponent implements OnInit {
   //hardcoded users
   user = new User(1, 'Edmund', 'Pan', 'Houston');
   user1 = new User(1, 'Jennifer', 'Qian', 'D.C.');
@@ -19,6 +19,10 @@ export class AddformComponent {
   going = [this.user1, this.user2, this.user3];
   model = new Event(null, '', '', '', '', this.user , this.going, '', '');
   submitted = false;
+
+  ngOnInit() {
+  }
+
   newEvent() {
     events.sort(function(a, b) {
       if(a.id < b.id) return -1;

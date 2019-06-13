@@ -3,11 +3,11 @@
 
   <h3 class="text-center my-4">Create an Event</h3>
 
-    <div  class="needs-validation" novalidate>
+    <form class="needs-validation" novalidate [formGroup]="addForm">
         <div class="form-group">
           <label for="eventName">Event Name</label>
           <input class="form-control" id="title" placeholder="Enter event name" required
-          [(ngModel)]="model.title" title="title"
+          [(ngModel)]="model.title" title="title" name="title"
           #title = 'ngModel'>
           
           <div [hidden]="title.valid || title.pristine"
@@ -18,7 +18,7 @@
         <div class="form-group">
           <label for="location">Location</label>
           <input class="form-control mb-3 mr-sm-3" id="location" placeholder="Enter location" required
-          [(ngModel)]="model.location" location="location"
+          [(ngModel)]="model.location" location="location" name="location"
           #location = 'ngModel'>
           <div [hidden]="location.valid || location.pristine"
           class="alert alert-danger">
@@ -29,7 +29,7 @@
         <div class="form-group form-inline">
             <label for="datetime-local-input" style="padding: 10px">Date</label>
             <input class="form-control mb-3 mr-sm-3" type="date" value="2019-06-14T13:45:00" id="date" required
-            [(ngModel)]="model.date" date="date"
+            [(ngModel)]="model.date" date="date" name="date"
             #date= 'ngModel'>
             <div [hidden]="date.valid || date.pristine"
             class="alert alert-danger">
@@ -39,7 +39,7 @@
         <div class="form-group form-inline">
             <label for="datetime-local-input" style="padding: 10px">Time</label>
             <input class="form-control" type="time" value="2019-06-19T13:45:00" id="time" required
-            [(ngModel)]="model.time" time="time"
+            [(ngModel)]="model.time" time="time" name="time"
             #time = 'ngModel'>
             <div [hidden]="time.valid || time.pristine"
             class="alert alert-danger">
@@ -50,12 +50,12 @@
         <div class="form-group">
           <label for="description">Description</label>
           <textarea class="form-control" id="description" rows="3" placeholder="Add a description"
-          [(ngModel)]="model.description" description="description"></textarea>
+          [(ngModel)]="model.description" description="description" name="description"></textarea>
         </div>
         <div class="form-group">
             <label for="photoUpload">Upload a photo</label>
             <input type="url" class="form-control" id="imageUrl" placeholder="Paste an image URL"
-            [(ngModel)]="model.imageUrl" imageUrl="imageUrl">
+            [(ngModel)]="model.imageUrl" imageUrl="imageUrl" name="imageUrl">
           <div>
             <img src="">
             </div>
@@ -64,7 +64,7 @@
         <button (click)="newEvent()" type="submit" class="btn btn-primary custom mx-5" routerLink="/dashboard">Submit</button>
         <button type="cancel" class="btn btn-danger custom mx-5" routerLink="/dashboard">Cancel</button>
         </div>
-      </div>
+      </form>
 
 </div>
 
