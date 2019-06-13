@@ -23,6 +23,8 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit() {
+    let formatDate = new Date(this.event.date);
+    this.event.date = formatDate.toDateString();
     if (this.currentUser === this.event.creator) {
       this.creator = true;
     }

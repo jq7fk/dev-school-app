@@ -24,6 +24,8 @@ export class InfocardComponent implements OnInit {
 
 
   ngOnInit() {
+    let formatDate = new Date(this.event.date);
+    this.event.date = formatDate.toDateString();
     if (this.event.attendees.filter(person => person.id == this.currentUser.id).length != 0) {
       console.log('here');
       this.joined = true;
