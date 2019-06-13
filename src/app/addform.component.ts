@@ -5,17 +5,16 @@ import { Event } from './event';
 import { NgModel, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from './user';
 import { events } from './eventsdata';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-addform',
   templateUrl: './addform.component.html',
 })
 export class AddformComponent implements OnInit {
-  @Input() edit: boolean;
-  
   //hardcoded users
-  user = new User(1, 'Edmund', 'Pan', 'Houston');
+  user = new User(5, "Current", "User", "Dallas");
+  user0 = new User(1, 'Edmund', 'Pan', 'Houston');
   user1 = new User(1, 'Jennifer', 'Qian', 'D.C.');
   user2 = new User(1, 'Matt', 'Damon', 'Houston');
   user3 = new User(1, 'Chris', 'Pratt', 'Houston');
@@ -24,8 +23,11 @@ export class AddformComponent implements OnInit {
   model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
   submitted = false;
   addForm: FormGroup;
+  edit = false;
+  id: number;
+  eventsList = events;
 
-  constructor(private formBuilder: FormBuilder, private route: Router) {
+  constructor(private formBuilder: FormBuilder, private route: Router, private dataRoute: ActivatedRoute) {
 
   }
 
@@ -38,6 +40,11 @@ export class AddformComponent implements OnInit {
       description: [''],
       imageUrl: ['', Validators.required]
     });
+    if(this.dataRoute.snapshot.params['id']) {
+      this.edit = true;
+      this.id = this.dataRoute.snapshot.params['id'];
+      this.model = this.eventsList.find(item => item.id == this.id);
+    }
   }
 
   get f() {
@@ -59,6 +66,9 @@ export class AddformComponent implements OnInit {
       this.route.navigate(['/dashboard']);
     }
     }
-    
-
+  
+  delete() {
+    var index = this.eventsList.indexOf(this.model);
+    this.eventsList.splice(index, 1);
+  }
 }

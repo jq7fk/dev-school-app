@@ -3,6 +3,8 @@ import { Event} from './event';
 import { User } from './user'
 import { events } from './eventsdata';
 import { Router } from '@angular/router';
+import { users } from './usersdata';
+
 
 @Component({
   selector: 'app-card',
@@ -12,14 +14,18 @@ export class CardComponent implements OnInit {
   @Input() event: Event;
   @Input() joined: boolean;
 
+  creator = false;
   eventsList = events;
-  currentUser = new User(5, "Current", "User", "Dallas");
+  currentUser = users[4];
   hover = false;
 
   constructor(private route: Router) {
   }
 
   ngOnInit() {
+    if (this.currentUser == this.event.creator) {
+      this.creator = true;
+    }
   }
 
   join() {
@@ -44,6 +50,10 @@ export class CardComponent implements OnInit {
   mouseLeave() {
     this.joined = true;
     this.hover = false;
+  }
+
+  editClick() {
+    this.route.navigate(['/editEvent', this.event.id]);
   }
 
   commentsClick() {

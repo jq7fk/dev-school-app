@@ -8,6 +8,7 @@ import { DetailsComponent } from './details.component';
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'addEvent', component: AddformComponent},
+  { path: 'editEvent/:id', component: AddformComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'details/:id', component: DetailsComponent}
 ];

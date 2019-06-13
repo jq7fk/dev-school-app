@@ -24,7 +24,7 @@
         <div class="form-inline">
         <div class="form-group form-inline">
             <label for="datetime-local-input" style="padding: 10px">Date</label>
-            <input class="form-control mb-3 mr-sm-3" type="date" value="2019-06-14T13:45:00" id="date" required
+            <input class="form-control mb-3 mr-sm-3" type="date" id="date" required
             [(ngModel)]="model.date" formControlName="date" [ngClass]="{ 'is-invalid': submitted && f.date.errors }">
             <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
                 <div *ngIf="f.date.errors.required">Date is required</div>
@@ -32,7 +32,7 @@
         </div>
         <div class="form-group form-inline">
             <label for="datetime-local-input" style="padding: 10px">Time</label>
-            <input class="form-control" type="time" value="2019-06-19T13:45:00" id="time" required
+            <input class="form-control" type="time" id="time" required
             [(ngModel)]="model.time" formControlName="time" [ngClass]="{ 'is-invalid': submitted && f.time.errors }">
             <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
                 <div *ngIf="f.time.errors.required">Time is required</div>
@@ -58,9 +58,9 @@
         <div class="text-center">
         <button *ngIf="!edit" class="btn btn-primary custom mx-5">Submit</button>
         <button *ngIf="!edit" type="cancel" class="btn btn-danger custom mx-5" routerLink="/dashboard">Cancel</button>
-        <button *ngIf="edit" class="btn btn-primary custom mx-5">Save Changes</button>
-        <button *ngIf="edit" class="btn btn-secondary custom mx-5">Cancel</button>
-        <button *ngIf="edit" class="btn btn-danger cuseom mx-5">Delete Event</button>
+        <button *ngIf="edit" class="btn btn-primary custom mx-5" routerLink="/dashboard">Save Changes</button>
+        <button *ngIf="edit" class="btn btn-secondary custom mx-5" routerLink="/dashboard">Cancel</button>
+        <button *ngIf="edit" class="btn btn-danger cuseom mx-5" (click)="delete()" routerLink="/dashboard">Delete Event</button>
         </div>
       </form>
 
