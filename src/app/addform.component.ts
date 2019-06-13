@@ -16,10 +16,11 @@ export class AddformComponent {
   user2 = new User(1, 'Matt', 'Damon', 'Houston');
   user3 = new User(1, 'Chris', 'Pratt', 'Houston');
   going = [this.user1, this.user2, this.user3];
-  model = new Event(1, '', '', '', '', this.user , this.going, '', '');
+  nocomments = [];
+  model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
   submitted = false;
   newEvent() {
-    this.model = new Event(1, '', '', '', '', this.user , this.going, '', '');
+    this.model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
     this.submitted = true; }
 
 }
