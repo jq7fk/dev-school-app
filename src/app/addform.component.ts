@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Time } from '@angular/common';
 import { Event } from './event';
@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
   templateUrl: './addform.component.html',
 })
 export class AddformComponent implements OnInit {
+  @Input() edit: boolean;
+  
   //hardcoded users
   user = new User(1, 'Edmund', 'Pan', 'Houston');
   user1 = new User(1, 'Jennifer', 'Qian', 'D.C.');

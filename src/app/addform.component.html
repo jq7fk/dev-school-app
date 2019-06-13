@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <div class="container center_div">
 
-  <h3 class="text-center my-4">Create an Event</h3>
+  <h3 *ngIf="!edit" class="text-center my-4">Create an Event</h3>
+  <h3 *ngIf="edit" class="text-center my-4">Edit Event</h3>
 
     <form class="needs-validation" novalidate [formGroup]="addForm" (ngSubmit)="newEvent()">
         <div class="form-group">
@@ -55,8 +56,11 @@
             </div>
           </div>
         <div class="text-center">
-        <button class="btn btn-primary custom mx-5">Submit</button>
-        <button type="cancel" class="btn btn-danger custom mx-5" routerLink="/dashboard">Cancel</button>
+        <button *ngIf="!edit" class="btn btn-primary custom mx-5">Submit</button>
+        <button *ngIf="!edit" type="cancel" class="btn btn-danger custom mx-5" routerLink="/dashboard">Cancel</button>
+        <button *ngIf="edit" class="btn btn-primary custom mx-5">Save Changes</button>
+        <button *ngIf="edit" class="btn btn-secondary custom mx-5">Cancel</button>
+        <button *ngIf="edit" class="btn btn-danger cuseom mx-5">Delete Event</button>
         </div>
       </form>
 

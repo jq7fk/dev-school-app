@@ -1,5 +1,5 @@
 <nav><div style="position:fixed; z-index: 9; top:5px;left:1000px;">
-        <button type="button" class="btn-primary btn-lg" routerLink="/addEvent">Create</button>
+        <button type="button" class="btn-primary btn-lg" (click)="create()">Create</button>
 </div></nav>
     <div style="padding-left:300px; padding-right:300px">
         <div *ngFor="let event of eventsList; let i = index">
