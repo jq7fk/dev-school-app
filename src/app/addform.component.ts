@@ -4,6 +4,7 @@ import { Time } from '@angular/common';
 import { Event } from './event';
 import { NgModel } from '@angular/forms';
 import { User } from './user';
+import { events } from './eventsdata';
 
 @Component({
   selector: 'app-addform',
@@ -19,7 +20,9 @@ export class AddformComponent {
   model = new Event(1, '', '', '', '', this.user , this.going, '', '');
   submitted = false;
   newEvent() {
+    events.push(this.model);
     this.model = new Event(1, '', '', '', '', this.user , this.going, '', '');
-    this.submitted = true; }
+    this.submitted = true; 
+  }
 
 }
