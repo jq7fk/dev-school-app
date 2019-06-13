@@ -77,7 +77,8 @@ export class AddformComponent implements OnInit {
   }
 
   openDialog() {
-    console.log('dialog');
-    const dialogRef = this.dialog.open(DialogComponent);
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {event: this.model}
+    });
   }
 }
