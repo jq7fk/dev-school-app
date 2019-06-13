@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class InfocardComponent implements OnInit {
   @Input() event: Event;
-  
+
   user = new User(1, 'Edmund', 'Pan', 'Houston');
   comment = new Comment(this.user, '');
   joined = false;
@@ -34,8 +34,7 @@ export class InfocardComponent implements OnInit {
   }
 
   newComment() {
-    console.log(this.comment.content);
-    this.event.comments.push(this.comment);
+    this.event.comments.unshift(this.comment);
     this.comment = new Comment(this.user, '');
     this.submitted = true;
   }
