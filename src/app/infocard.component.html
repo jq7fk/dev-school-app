@@ -21,7 +21,8 @@
                 </p>
             </div>
         </div>
-        <div><button type="button" class="btn-primary btn-lg">Join</button></div>
+        <div><button type="button" class="btn-primary btn-lg" *ngIf="!joined">Join</button></div>
+        <div><button class="btn btn-secondary btn.lg" *ngIf="joined">Joined</button></div>
 
 
     </div>

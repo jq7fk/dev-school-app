@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
         else if(a.id > b.id) return -1;
         else return 0;
       });
-      console.log(this.eventsList);
       this.eventsList.forEach(item => {
         if(item.attendees.filter(person => person.id == this.currentUser.id).length != 0) {
           this.joinedList.push(true);

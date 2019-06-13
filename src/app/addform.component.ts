@@ -45,7 +45,6 @@ export class AddformComponent implements OnInit {
   newEvent() {
     this.submitted = true;
     if(this.addForm.valid) {
-      console.log('valid');
       events.sort(function(a, b) {
         if(a.id < b.id) return -1;
         if(a.id > b.id) return 1;
@@ -57,8 +56,6 @@ export class AddformComponent implements OnInit {
       this.model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
       this.route.navigate(['/dashboard']);
     }
-    else console.log('bad');
-    
     }
     
 
