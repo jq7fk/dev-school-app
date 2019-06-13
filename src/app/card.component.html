@@ -16,8 +16,9 @@
                 </div>
             </div>
             <div class="col-md-4" style="vertical-align:middle">
-                <button type="button" class="btn btn-outline-primary btn.lg" style="margin-top:25px" *ngIf="!joined" (click)="join()">Join</button>
-                <button *ngIf="joined" class="btn btn-secondary btn.lg" style="margin-top:25px">Joined</button>
+                <button type="button" class="btn btn-outline-primary btn.lg" style="margin-top:25px" *ngIf="!joined && !hover" (click)="join()">Join</button>
+                <button *ngIf="joined" class="btn btn-secondary btn.lg" style="margin-top:25px" (mouseenter)="hover=true; joined=false">Joined</button>
+                <button *ngIf="hover" class="btn btn-warning btn.lg" style="margin-top:25px" (mouseleave)="mouseLeave()" (click)="leave()">Leave</button>
                 <p class="card-text"><small class="text-muted">{{event.attendees.length}} Fins going</small></p>
             </div>
         </div>
@@ -28,7 +29,7 @@
         <div>
             <div class="card-footer text-muted" routerLink="/details" (click)="commentsClick()">
                 <div>
-                    12 Comments
+                    {{event.comments.length}} Comments
                 </div>
             </div>
 
