@@ -6,6 +6,7 @@ import { NgModel, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from './user';
 import { events } from './eventsdata';
 import { Router, ActivatedRoute } from '@angular/router';
+import { users } from './usersdata';
 
 @Component({
   selector: 'app-addform',
@@ -13,7 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AddformComponent implements OnInit {
   //hardcoded users
-  user = new User(5, "Current", "User", "Dallas");
+  user = users[4];
   user0 = new User(1, 'Edmund', 'Pan', 'Houston');
   user1 = new User(1, 'Jennifer', 'Qian', 'D.C.');
   user2 = new User(1, 'Matt', 'Damon', 'Houston');

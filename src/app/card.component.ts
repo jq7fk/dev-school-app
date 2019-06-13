@@ -23,7 +23,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.currentUser == this.event.creator) {
+    if (this.currentUser === this.event.creator) {
       this.creator = true;
     }
   }
