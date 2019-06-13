@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div class="container center_div">
+
+  <!--<input [value]="value"-->
+
+  <h3 class="text-center my-4">Create an Event</h3>
+
+    <form (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+        <div class="form-group">
+          <label for="eventName">Event Name</label>
+          <input class="form-control" id="eventName1" placeholder="Enter event name" required>
+          <div class="invalid-feedback">
+            Event name required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input class="form-control mb-3 mr-sm-3" id="location1" placeholder="Enter location" required>
+          <div class="invalid-feedback">
+              Location required.
+            </div>
+        </div>
+        <form class="form-inline">
+        <div class="form-group form-inline">
+            <label for="datetime-local-input" style="padding: 10px">Start Date</label>
+            <input class="form-control mb-3 mr-sm-3" type="date" value="2019-06-14T13:45:00" id="example-datetime-local-input" required>
+            <div class="invalid-feedback">
+                Start date required.
+              </div>
+        </div>
+        <div class="form-group form-inline">
+            <label for="datetime-local-input" style="padding: 10px">Start Time</label>
+            <input class="form-control" type="time" value="2019-06-19T13:45:00" id="example-datetime-local-input" required>
+            <div class="invalid-feedback">
+                Start time required.
+              </div>
+        </div>
+      </form>
+      <form class="form-inline">
+          <div class="form-group form-inline">
+              <label for="datetime-local-input" style="padding: 15px">End Date</label>
+              <input class="form-control mb-3 mr-sm-3" type="date" value="2019-06-19T13:45:00" id="example-datetime-local-input" required>
+              <div class="invalid-feedback">
+                  End date required.
+                </div>
+          </div>
+          <div class="form-group form-inline">
+              <label for="datetime-local-input" style="padding: 14px">End Time</label>
+              <input class="form-control" type="time" value="2019-06-19T13:45:00" id="example-datetime-local-input" required>
+              <div class="invalid-feedback">
+                  End time required.
+              </div>
+          </div>
+        </form>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="textarea1" rows="3" placeholder="Add a description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="photoUpload">Upload a photo</label>
+            <input type="file" class="form-control-file" id="formControlFile1">
+          <div>
+            <img src="">
+            </div>
+          </div>
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary custom mx-5" routerLink="/dashboard" (click)="onSubmit()">Submit</button>
+        <button type="cancel" class="btn btn-danger custom mx-5" routerLink="/dashboard">Cancel</button>
+        </div>
+</form>
+
+</div>
+
+
