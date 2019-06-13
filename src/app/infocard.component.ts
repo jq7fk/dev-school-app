@@ -12,25 +12,28 @@ import { events } from './eventsdata';
 export class InfocardComponent implements OnInit {
   @Input() event: Event;
 
-  user = new User(1, 'Edmund', 'Pan', 'Houston');
-  comment = new Comment(this.user, '');
+  currentUser = new User(5, "Current", "User", "Dallas");
+  comment = new Comment(this.currentUser, '');
   joined = false;
   eventsList = events;
   id: number;
   submitted = false;
 
   ngOnInit() {
-    console.log(this.event);
+    if(this.event.attendees.filter(person => person.id == this.currentUser.id).length != 0) {
+      console.log('here');
+      this.joined = true;
+    }
   }
 
   join() {
     this.joined = true;
-    this.eventsList.find(item => item.id === this.event.id).attendees.push(this.user);
+    this.eventsList.find(item => item.id === this.event.id).attendees.push(this.currentUser);
   }
 
   newComment() {
     this.event.comments.unshift(this.comment);
-    this.comment = new Comment(this.user, '');
+    this.comment = new Comment(this.currentUser, '');
     this.submitted = true;
   }
 }

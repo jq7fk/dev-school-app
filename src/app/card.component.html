@@ -12,12 +12,13 @@
             <div class="col-md-8">
                 <div class="card-body" align="left" style="margin-left:20px">
                     <p class="card-text">{{event.time}} {{event.date}}</p>
-                    <p class="card-text">{{event.location}}</p>
+                    <p class="card-text">Location: {{event.location}}</p>
                 </div>
             </div>
             <div class="col-md-4" style="vertical-align:middle">
-                <button type="button" class="btn btn-outline-primary btn.lg" style="margin-top:25px" *ngIf="!joined" (click)="join()">Join</button>
-                <button *ngIf="joined" class="btn btn-secondary btn.lg" style="margin-top:25px">Joined</button>
+                <button type="button" class="btn btn-outline-primary btn.lg" style="margin-top:25px" *ngIf="!joined && !hover" (click)="join()">Join</button>
+                <button *ngIf="joined" class="btn btn-secondary btn.lg" style="margin-top:25px" (mouseenter)="hover=true; joined=false">Joined</button>
+                <button *ngIf="hover" class="btn btn-warning btn.lg" style="margin-top:25px" (mouseleave)="mouseLeave()" (click)="leave()">Leave</button>
                 <p class="card-text"><small class="text-muted">{{event.attendees.length}} Fins going</small></p>
                 <a *ngIf="creator"  class="nav-link" 
                 routerLink="/editevent" (click)="editClick()">Edit</a>
@@ -30,7 +31,7 @@
         <div>
             <div class="card-footer text-muted" routerLink="/details" (click)="commentsClick()">
                 <div>
-                    12 Comments
+                    {{event.comments.length}} Comments
                 </div>
             </div>
 

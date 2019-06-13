@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AddformComponent } from './addform.component';
@@ -13,6 +15,7 @@ import { DashboardComponent } from './dashboard.component';
 import { InfocardComponent } from './infocard.component';
 import { InfocommentComponent } from './infocomment.component';
 import { InfonavbarComponent } from './infonavbar.component';
+import { DialogComponent } from './dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +28,18 @@ import { InfonavbarComponent } from './infonavbar.component';
     DashboardComponent,
     InfocardComponent,
     InfocommentComponent,
-    InfonavbarComponent
+    InfonavbarComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
+  entryComponents: [DialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

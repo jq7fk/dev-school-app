@@ -16,7 +16,8 @@ export class CardComponent implements OnInit {
 
   creator = false;
   eventsList = events;
-  currentUser = users[1];
+  currentUser = users[4];
+  hover = false;
 
   constructor(private route: Router) {
   }
@@ -31,9 +32,30 @@ export class CardComponent implements OnInit {
     this.joined = true;
     this.eventsList.find(item => item.id === this.event.id).attendees.push(this.currentUser);
   }
+
+  leave() {
+    this.joined = false;
+    this.hover = false;
+    this.eventsList.forEach(item => {
+      var index = item.attendees.indexOf(this.currentUser);
+      item.attendees.splice(index, 1);
+    });
+  }
+
+  mouseEnter() {
+    this.joined = false;
+    this.hover = true;
+  }
+
+  mouseLeave() {
+    this.joined = true;
+    this.hover = false;
+  }
+
   editClick() {
     this.route.navigate(['/editEvent', this.event.id]);
   }
+
   commentsClick() {
     this.route.navigate(['/details', this.event.id]);
   }

@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Time } from '@angular/common';
 import { Event } from './event';
 import { NgModel, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from './user';
 import { events } from './eventsdata';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { users } from './usersdata';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './dialog.component';
 
 @Component({
   selector: 'app-addform',
@@ -13,7 +16,8 @@ import { Router } from '@angular/router';
 })
 export class AddformComponent implements OnInit {
   //hardcoded users
-  user = new User(1, 'Edmund', 'Pan', 'Houston');
+  user = users[4];
+  user0 = new User(1, 'Edmund', 'Pan', 'Houston');
   user1 = new User(1, 'Jennifer', 'Qian', 'D.C.');
   user2 = new User(1, 'Matt', 'Damon', 'Houston');
   user3 = new User(1, 'Chris', 'Pratt', 'Houston');
@@ -22,8 +26,12 @@ export class AddformComponent implements OnInit {
   model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
   submitted = false;
   addForm: FormGroup;
+  edit = false;
+  id: number;
+  eventsList = events;
 
-  constructor(private formBuilder: FormBuilder, private route: Router) {
+  constructor(private formBuilder: FormBuilder, private route: Router, private dataRoute: ActivatedRoute,
+    public dialog: MatDialog) {
 
   }
 
@@ -36,6 +44,11 @@ export class AddformComponent implements OnInit {
       description: [''],
       imageUrl: ['', Validators.required]
     });
+    if(this.dataRoute.snapshot.params['id']) {
+      this.edit = true;
+      this.id = this.dataRoute.snapshot.params['id'];
+      this.model = this.eventsList.find(item => item.id == this.id);
+    }
   }
 
   get f() {
@@ -45,7 +58,6 @@ export class AddformComponent implements OnInit {
   newEvent() {
     this.submitted = true;
     if(this.addForm.valid) {
-      console.log('valid');
       events.sort(function(a, b) {
         if(a.id < b.id) return -1;
         if(a.id > b.id) return 1;
@@ -57,9 +69,16 @@ export class AddformComponent implements OnInit {
       this.model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
       this.route.navigate(['/dashboard']);
     }
-    else console.log('bad');
-    
     }
-    
+  
+  delete() {
+    var index = this.eventsList.indexOf(this.model);
+    this.eventsList.splice(index, 1);
+  }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {event: this.model}
+    });
+  }
 }

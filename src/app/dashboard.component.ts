@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { events } from './eventsdata';
 import { Event } from './event';
 import { User } from './user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,18 +13,25 @@ export class DashboardComponent implements OnInit {
     joinedList = [];
     currentUser = new User(5, "Current", "User", "Dallas");
 
+    constructor(private route:Router) {
+      
+    }
+
     ngOnInit() {
       this.eventsList.sort(function(a, b) {
         if(a.id < b.id) return 1;
         else if(a.id > b.id) return -1;
         else return 0;
       });
-      console.log(this.eventsList);
       this.eventsList.forEach(item => {
         if(item.attendees.filter(person => person.id == this.currentUser.id).length != 0) {
           this.joinedList.push(true);
         }
         else this.joinedList.push(false);
     });
+  }
+
+  create() {
+    this.route.navigate(['/addEvent']);
   }
 }
