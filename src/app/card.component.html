@@ -19,6 +19,8 @@
                 <button type="button" class="btn btn-outline-primary btn.lg" style="margin-top:25px" *ngIf="!joined" (click)="join()">Join</button>
                 <button *ngIf="joined" class="btn btn-secondary btn.lg" style="margin-top:25px">Joined</button>
                 <p class="card-text"><small class="text-muted">{{event.attendees.length}} Fins going</small></p>
+                <a *ngIf="creator"  class="nav-link" 
+                routerLink="/editevent" (click)="editClick()">Edit</a>
             </div>
         </div>
         <div style="text-align: left">
