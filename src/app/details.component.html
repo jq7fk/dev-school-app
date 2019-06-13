@@ -3,11 +3,8 @@
         <app-infonavbar></app-infonavbar>
         
         <div style="padding-left:300px; padding-right:300px">
-          <app-infocard></app-infocard>
-          <app-infocomment></app-infocomment>
-          <app-infocomment></app-infocomment>
-          <app-infocomment></app-infocomment>
-          <app-infocomment></app-infocomment>
+          <app-infocard [event]="event"></app-infocard>
+          <app-infocomment *ngFor="let comment of event.comments" [comment]="comment"></app-infocomment>
       
         </div>
       
