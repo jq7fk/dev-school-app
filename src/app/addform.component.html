@@ -58,7 +58,7 @@
         <div class="text-center">
         <button *ngIf="!edit" class="btn btn-primary custom mx-5" (click)="newEvent()">Submit</button>
         <button *ngIf="!edit" type="cancel" class="btn btn-danger custom mx-5" routerLink="/dashboard">Cancel</button>
-        <button *ngIf="edit" class="btn btn-primary custom mx-5" routerLink="/dashboard">Save Changes</button>
+        <button *ngIf="edit" class="btn btn-primary custom mx-5" (click)="save()" routerLink="/dashboard">Save Changes</button>
         <button *ngIf="edit" class="btn btn-secondary custom mx-5" routerLink="/dashboard">Cancel</button>
         <button *ngIf="edit" class="btn btn-danger custom mx-5" (click)="openDialog()">Delete Event</button>
         </div>

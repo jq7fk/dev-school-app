@@ -18,6 +18,9 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
+      if(localStorage.getItem('events') != null) {
+        this.eventsList = JSON.parse(localStorage.getItem('events'));
+      }
       this.eventsList.sort(function(a, b) {
         if(a.id < b.id) return 1;
         else if(a.id > b.id) return -1;

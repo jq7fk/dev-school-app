@@ -23,11 +23,12 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit() {
+    //console.log(this.joined);
     let formatDate = new Date(this.event.date+' '+this.event.time);
     this.event.date = formatDate.toDateString();
     this.event.time = formatDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
 
-    if (this.currentUser === this.event.creator) {
+    if (this.currentUser.id == this.event.creator.id) {
       this.creator = true;
     }
   }
@@ -35,6 +36,8 @@ export class CardComponent implements OnInit {
   join() {
     this.joined = true;
     this.eventsList.find(item => item.id === this.event.id).attendees.push(this.currentUser);
+    localStorage.setItem('events', JSON.stringify(this.eventsList));
+    console.log(localStorage);
   }
 
   leave() {
@@ -44,6 +47,8 @@ export class CardComponent implements OnInit {
       var index = item.attendees.indexOf(this.currentUser);
       item.attendees.splice(index, 1);
     });
+    localStorage.setItem('events', JSON.stringify(this.eventsList));
+    console.log(localStorage);
   }
 
   mouseEnter() {
