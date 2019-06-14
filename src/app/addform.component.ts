@@ -67,7 +67,6 @@ export class AddformComponent implements OnInit {
       this.model.id = index + 1;
       events.push(this.model);
       localStorage.setItem('events', JSON.stringify(events));
-      console.log(localStorage);
       this.model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
       this.route.navigate(['/dashboard']);
     }
