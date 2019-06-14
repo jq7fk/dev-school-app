@@ -45,6 +45,7 @@ export class AddformComponent implements OnInit {
       imageUrl: ['', Validators.required]
     });
     if(this.dataRoute.snapshot.params['id']) {
+      this.eventsList = JSON.parse(localStorage.getItem('events'));
       this.edit = true;
       this.id = this.dataRoute.snapshot.params['id'];
       this.model = this.eventsList.find(item => item.id == this.id);
