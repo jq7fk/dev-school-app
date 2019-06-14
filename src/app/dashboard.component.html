@@ -1,9 +1,14 @@
-<nav><div style="position:fixed; z-index: 9; top:5px;left:1000px;">
-        <button type="button" class="btn-primary btn-lg" (click)="create()">Create</button>
-</div></nav>
-    <div style="padding-left:300px; padding-right:300px">
+<div class="row" style="position:fixed; top: 0; z-index:9; width:100%">
+        <nav></nav>
+        <div class="col-md-8"></div>
+        <div class="col-md-1">
+                <button type="button" class="btn-primary btn-lg" (click)="create()">Create</button>
+        </div>
+</div>
+
+<div style="padding-left:300px; padding-right:300px">
         <div *ngFor="let event of eventsList; let i = index">
                 <app-card [event]="event" [joined]="joinedList[i]"></app-card>
         </div>
-<router-outlet></router-outlet>
+        <router-outlet></router-outlet>
 </div>
