@@ -66,6 +66,8 @@ export class AddformComponent implements OnInit {
       var index = events[events.length - 1].id;
       this.model.id = index + 1;
       events.push(this.model);
+      localStorage.setItem('events', JSON.stringify(events));
+      console.log(localStorage);
       this.model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
       this.route.navigate(['/dashboard']);
     }
@@ -74,6 +76,10 @@ export class AddformComponent implements OnInit {
   delete() {
     var index = this.eventsList.indexOf(this.model);
     this.eventsList.splice(index, 1);
+  }
+
+  save() {
+    localStorage.setItem('events', JSON.stringify(events));
   }
 
   openDialog() {

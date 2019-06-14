@@ -21,10 +21,18 @@ export class DetailsComponent implements OnInit {
 
     ngOnInit() {
         this.id = this.dataRoute.snapshot.params['id'];
+        if(localStorage.getItem('events') != null) {
+            this.eventsList = JSON.parse(localStorage.getItem('events'));
+        }
         this.event = this.eventsList.find(item => item.id == this.id);
         if(this.event.attendees.filter(item => item.id == this.user.id).length != 0) {
             this.joined = true;
         }
-        console.log(this.event);
+
+        window.onbeforeunload = (ev) => {
+            localStorage.setItem('events', JSON.stringify(this.eventsList));
+        }
     }
+
+    
 }

@@ -18,6 +18,7 @@ export class DialogComponent {
     delete() {
       var index = this.eventsList.indexOf(this.event['event']);
       this.eventsList.splice(index, 1);
+      localStorage.setItem('events', JSON.stringify(events));
       this.route.navigate(['/dashboard']);
       this.dialogRef.close();
     }

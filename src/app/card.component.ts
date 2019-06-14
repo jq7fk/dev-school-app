@@ -12,10 +12,11 @@ import { users } from './usersdata';
 })
 export class CardComponent implements OnInit {
   @Input() event: Event;
+  @Input() eventsList: Event[];
   @Input() joined: boolean;
 
   creator = false;
-  eventsList = events;
+  // eventsList = events;
   currentUser = users[4];
   hover = false;
 
@@ -23,27 +24,41 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit() {
+    //console.log(this.joined);
     let formatDate = new Date(this.event.date+' '+this.event.time);
     this.event.date = formatDate.toDateString();
     this.event.time = formatDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
 
-    if (this.currentUser === this.event.creator) {
+    if (this.currentUser.id == this.event.creator.id) {
       this.creator = true;
     }
   }
 
   join() {
     this.joined = true;
-    this.eventsList.find(item => item.id === this.event.id).attendees.push(this.currentUser);
+    this.eventsList.find(item => item.id == this.event.id).attendees.push(this.currentUser);
+    console.log(this.eventsList.find(item => item.id == this.event.id).attendees);
+    localStorage.setItem('events', JSON.stringify(this.eventsList));
+    // console.log(localStorage);
   }
 
   leave() {
     this.joined = false;
     this.hover = false;
+    // this.eventsList.find(item => {
+    //   if(item.id == this.event.id) {
+    //     var index = item.attendees.indexOf(this.currentUser);
+    //     item.attendees.splice(index, 1);
+    //   }
+    //   console.log(item.attendees);
+    // });
     this.eventsList.forEach(item => {
       var index = item.attendees.indexOf(this.currentUser);
       item.attendees.splice(index, 1);
+      console.log(item.attendees);
     });
+    localStorage.setItem('events', JSON.stringify(this.eventsList));
+    console.log(localStorage);
   }
 
   mouseEnter() {

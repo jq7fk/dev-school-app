@@ -12,11 +12,12 @@ import { users } from './usersdata';
 })
 export class InfocardComponent implements OnInit {
   @Input() event: Event;
+  @Input() eventsList: Event[];
 
   currentUser = users[4];
   comment = new Comment(this.currentUser, '');
   joined = false;
-  eventsList = events;
+  // eventsList = events;
   id: number;
   submitted = false;
   creator = false;
@@ -26,7 +27,12 @@ export class InfocardComponent implements OnInit {
   ngOnInit() {
     let formatDate = new Date(this.event.date+' '+this.event.time);
     this.event.date = formatDate.toDateString();
-    this.event.time = formatDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+    this.event.time = formatDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+
+    // if(localStorage.getItem('events') != null) {
+    //   this.eventsList = JSON.parse(localStorage.getItem('events'));
+
+    // }
 
     if (this.event.attendees.filter(person => person.id == this.currentUser.id).length != 0) {
       console.log('here');
@@ -46,6 +52,7 @@ export class InfocardComponent implements OnInit {
       var index = item.attendees.indexOf(this.currentUser);
       item.attendees.splice(index, 1);
     });
+    localStorage.setItem('events', JSON.stringify(this.eventsList));
   }
 
   mouseEnter() {
@@ -61,10 +68,12 @@ export class InfocardComponent implements OnInit {
   join() {
     this.joined = true;
     this.eventsList.find(item => item.id === this.event.id).attendees.push(this.currentUser);
+    localStorage.setItem('events', JSON.stringify(this.eventsList));
   }
 
   newComment() {
     this.event.comments.unshift(this.comment);
+    localStorage.setItem('events', JSON.stringify(events));
     this.comment = new Comment(this.currentUser, '');
     this.submitted = true;
   }
