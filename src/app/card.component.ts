@@ -12,10 +12,11 @@ import { users } from './usersdata';
 })
 export class CardComponent implements OnInit {
   @Input() event: Event;
+  @Input() eventsList: Event[];
   @Input() joined: boolean;
 
   creator = false;
-  eventsList = events;
+  // eventsList = events;
   currentUser = users[4];
   hover = false;
 
@@ -35,18 +36,27 @@ export class CardComponent implements OnInit {
 
   join() {
     this.joined = true;
-    this.eventsList.find(item => item.id === this.event.id).attendees.push(this.currentUser);
+    this.eventsList.find(item => item.id == this.event.id).attendees.push(this.currentUser);
+    console.log(this.eventsList.find(item => item.id == this.event.id).attendees);
     localStorage.setItem('events', JSON.stringify(this.eventsList));
-    console.log(localStorage);
+    // console.log(localStorage);
   }
 
   leave() {
     this.joined = false;
     this.hover = false;
-    this.eventsList.forEach(item => {
-      var index = item.attendees.indexOf(this.currentUser);
-      item.attendees.splice(index, 1);
+    this.eventsList.find(item => {
+      if(item.id == this.event.id) {
+        var index = item.attendees.indexOf(this.currentUser);
+        item.attendees.splice(index, 1);
+      }
+      console.log(item.attendees);
     });
+    // this.eventsList.forEach(item => {
+    //   var index = item.attendees.indexOf(this.currentUser);
+    //   item.attendees.splice(index, 1);
+    //   console.log(item.attendees);
+    // });
     localStorage.setItem('events', JSON.stringify(this.eventsList));
     console.log(localStorage);
   }

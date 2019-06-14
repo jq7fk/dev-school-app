@@ -3,7 +3,7 @@
         <app-infonavbar></app-infonavbar>
         
         <div style="padding-left:300px; padding-right:300px">
-          <app-infocard [event]="event"></app-infocard>
+          <app-infocard [event]="event" [eventsList]="eventsList"></app-infocard>
           <app-infocomment *ngFor="let comment of event.comments" [comment]="comment"></app-infocomment>
       
         </div>
