@@ -12,11 +12,12 @@ import { users } from './usersdata';
 })
 export class InfocardComponent implements OnInit {
   @Input() event: Event;
+  @Input() eventsList: Event[];
 
   currentUser = users[4];
   comment = new Comment(this.currentUser, '');
   joined = false;
-  eventsList = events;
+  // eventsList = events;
   id: number;
   submitted = false;
   creator = false;
