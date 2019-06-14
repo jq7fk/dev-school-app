@@ -1,8 +1,11 @@
-<nav>
-        <div style="position:fixed; z-index: 9; top:5px; padding-left:300px; padding-right:300px;right: 5px;">
-                <button type="button" class="btn-primary btn-lg" (click)="create()" >Create</button>
-        </div>
-</nav>
+<div style = "padding-left:300px; padding-right:300px;"class = "border-top-0" >
+        <nav class = "border-top-0" >
+                <div style="position:fixed; z-index: 9; top:5px; padding-left:300px; padding-right:300px;right: 5px;">
+                        <button type="button" class="btn-primary btn-lg" (click)="create()">Create</button>
+                </div>
+        </nav>
+</div>
+<div style="margin-top:60px"></div>
 <div style="padding-left:300px; padding-right:300px">
         <div *ngFor="let event of eventsList; let i = index">
                 <app-card [event]="event" [joined]="joinedList[i]"></app-card>
