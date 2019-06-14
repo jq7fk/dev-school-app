@@ -45,18 +45,18 @@ export class CardComponent implements OnInit {
   leave() {
     this.joined = false;
     this.hover = false;
-    this.eventsList.find(item => {
-      if(item.id == this.event.id) {
-        var index = item.attendees.indexOf(this.currentUser);
-        item.attendees.splice(index, 1);
-      }
-      console.log(item.attendees);
-    });
-    // this.eventsList.forEach(item => {
-    //   var index = item.attendees.indexOf(this.currentUser);
-    //   item.attendees.splice(index, 1);
+    // this.eventsList.find(item => {
+    //   if(item.id == this.event.id) {
+    //     var index = item.attendees.indexOf(this.currentUser);
+    //     item.attendees.splice(index, 1);
+    //   }
     //   console.log(item.attendees);
     // });
+    this.eventsList.forEach(item => {
+      var index = item.attendees.indexOf(this.currentUser);
+      item.attendees.splice(index, 1);
+      console.log(item.attendees);
+    });
     localStorage.setItem('events', JSON.stringify(this.eventsList));
     console.log(localStorage);
   }

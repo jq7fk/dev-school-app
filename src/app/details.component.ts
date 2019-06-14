@@ -23,11 +23,8 @@ export class DetailsComponent implements OnInit {
         this.id = this.dataRoute.snapshot.params['id'];
         if(localStorage.getItem('events') != null) {
             this.eventsList = JSON.parse(localStorage.getItem('events'));
-            console.log(this.eventsList);
         }
-        console.log(this.id);
         this.event = this.eventsList.find(item => item.id == this.id);
-        console.log(this.event.comments);
         if(this.event.attendees.filter(item => item.id == this.user.id).length != 0) {
             this.joined = true;
         }
