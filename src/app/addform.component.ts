@@ -45,6 +45,7 @@ export class AddformComponent implements OnInit {
       imageUrl: ['', Validators.required]
     });
     if(this.dataRoute.snapshot.params['id']) {
+      this.eventsList = JSON.parse(localStorage.getItem('events'));
       this.edit = true;
       this.id = this.dataRoute.snapshot.params['id'];
       this.model = this.eventsList.find(item => item.id == this.id);
@@ -67,7 +68,6 @@ export class AddformComponent implements OnInit {
       this.model.id = index + 1;
       events.push(this.model);
       localStorage.setItem('events', JSON.stringify(events));
-      console.log(localStorage);
       this.model = new Event(1, '', '', '', '', this.user , this.going, this.nocomments, '', '');
       this.route.navigate(['/dashboard']);
     }
