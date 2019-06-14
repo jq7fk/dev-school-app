@@ -2,13 +2,8 @@
 <div  style="text-align:center ;align-self:center">
         <app-infonavbar></app-infonavbar>
         
-<<<<<<< HEAD
         <div style="padding-left:250px; padding-right:250px">
           <app-infocard [event]="event"></app-infocard>
-=======
-        <div style="padding-left:300px; padding-right:300px">
-          <app-infocard [event]="event" [eventsList]="eventsList"></app-infocard>
->>>>>>> ba3108c7fd5d3be2353d3eaf112744cb0fb20eed
           <app-infocomment *ngFor="let comment of event.comments" [comment]="comment"></app-infocomment>
       
         </div>
